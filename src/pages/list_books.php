@@ -3,7 +3,7 @@
 
     $sql_todos = "SELECT * FROM books;";
     $sql_disponiveis = 'SELECT * FROM books WHERE status = "disponível";';
-    $sql_emprestados = 'SELECT * FROM books WHERE status = "emprestados";';
+    $sql_emprestados = 'SELECT * FROM books WHERE status = "emprestado";';
 
     $result_todos = mysqli_query($connection, $sql_todos);
     $result_disponiveis = mysqli_query($connection, $sql_disponiveis);
@@ -27,10 +27,11 @@
             <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
                 <input type="radio" name="status" value="todos">Mostrar Todos
                 <input type="radio" name="status" value="disponível">Mostrar Disponiveis
-                <input type="radio" name="status" value="emprestados">Mostrar Emprestados<br><br>
+                <input type="radio" name="status" value="emprestados">Mostrar Emprestados<br>
                 <input type="submit" value="FILTRAR">
             </form>
         </div>
+        <br>
         <div class="table">
             <table>
                 <tr>
@@ -42,12 +43,11 @@
                     <th>Data do Registro</th>
                     <th>Ações</th>
                 </tr>
-
+                    
                 <?php
-                    $status = $_POST['status'];
-
-                    if ($status == "todos") {
-                        while ($linha = mysqli_fetch_assoc($result_todos)) {
+                    $status = $_POST['status'] ?? "";
+                    if ($status == "emprestados") {
+                        while ($linha = mysqli_fetch_assoc($result_emprestados)) {
                             echo "<tr>"; 
                             echo "<td>" . $linha['id'] . "</td>";
                             echo "<td>" . $linha['title'] . "</td>";
@@ -55,7 +55,8 @@
                             echo "<td>" . $linha['publication_year'] . "</td>";
                             echo "<td>" . $linha['status'] . "</td>";
                             echo "<td>" . $linha['registration_date'] . "</td>";
-                            echo "<td><a href='update_status.html?id=" . $linha['id'] . "'>Editar Status</td>";
+                            echo "<td><a href='update_status.php?id=" . $linha['id'] . "'>Editar Status</td>";
+                            echo "<td><a href='../models/delete_book.php?id=" . $linha['id'] . "'>Apagar Livro</td>";
                             echo "</tr>";
                         }
                     }
@@ -69,12 +70,13 @@
                             echo "<td>" . $linha['publication_year'] . "</td>";
                             echo "<td>" . $linha['status'] . "</td>";
                             echo "<td>" . $linha['registration_date'] . "</td>";
-                            echo "<td><a href='update_status.html?id=" . $linha['id'] . "'>Editar Status</td>";
+                            echo "<td><a href='update_status.php?id=" . $linha['id'] . "'>Editar Status</td>";
+                            echo "<td><a href='../models/delete_book.php?id=" . $linha['id'] . "'>Apagar Livro</td>";
                             echo "</tr>";
                         }
                     }
                     else {
-                        while ($linha = mysqli_fetch_assoc($result_emprestados)) {
+                        while ($linha = mysqli_fetch_assoc($result_todos)) {
                             echo "<tr>"; 
                             echo "<td>" . $linha['id'] . "</td>";
                             echo "<td>" . $linha['title'] . "</td>";
@@ -82,7 +84,8 @@
                             echo "<td>" . $linha['publication_year'] . "</td>";
                             echo "<td>" . $linha['status'] . "</td>";
                             echo "<td>" . $linha['registration_date'] . "</td>";
-                            echo "<td><a href='update_status.html?id=" . $linha['id'] . "'>Editar Status</td>";
+                            echo "<td><a href='update_status.php?id=" . $linha['id'] . "'>Editar Status</td>";
+                            echo "<td><a href='../models/delete_book.php?id=" . $linha['id'] . "'>Apagar Livro</td>";
                             echo "</tr>";
                         }
                     }

@@ -10,9 +10,9 @@
         <div class="card">
             <div class="form">
                 <h2 class="card-title">Cadastrar Livro</h2>
-                <form action="" method="post">
+                <form action="../models/register_book.php" method="post">
                    <label>Título do Livro:</label><br>
-                   <input type="text" name="book_name"><br><br>
+                   <input type="text" name="book_title"><br><br>
                    <label>Autor do Livro:</label><br>
                    <input type="text" name="book_author"><br><br>
                    <label>Data de Publicação:</label><br>
@@ -24,3 +24,8 @@
     </div>
 </body>
 </html>
+
+<?php
+    echo "<br><br>";
+    include "../pages/list_books.php";
+?>
