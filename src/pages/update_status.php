@@ -8,10 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechLibrary</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="option-status">
+    <main class="container">
+        <article>
             <div class="form">
                 <h2 class="card-title">Alterar Status do Livro</h2>
                 <form action="../models/update_status.php" method="post">
@@ -21,7 +22,7 @@
                     <input type="submit" value="ATUALIZAR STATUS">
                 </form>
             </div>
-        </div>
-    </div>
+        </article>
+    </main>
 </body>
 </html>

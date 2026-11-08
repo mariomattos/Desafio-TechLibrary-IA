@@ -4,28 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechLibrary</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="form">
-                <h2 class="card-title">Cadastrar Livro</h2>
+    <main class="container-fluid">
+        <section>
+            <article>
+                <h1 class="card-title">Cadastrar Livro</h1>
                 <form action="../models/register_book.php" method="post">
-                   <label>Título do Livro:</label><br>
-                   <input type="text" name="book_title"><br><br>
-                   <label>Autor do Livro:</label><br>
-                   <input type="text" name="book_author"><br><br>
-                   <label>Data de Publicação:</label><br>
-                   <input type="date" name="book_publication_year"><br><br>
-                   <input type="submit" value="CADASTRAR LIVRO">
+                    <fieldset>
+                        <label>Título do Livro:</label>
+                        <input type="text" name="book_title" placeholder="Título do Livro">
+                        <label>Autor do Livro:</label>
+                        <input type="text" name="book_author" plaeholder="Autor do Livro" placeholder="Autor do Livro" required>
+                        <label>Ano de Publicação:</label>
+                        <input type="number" name="book_publication_year" max="<?php date('Y')?>" placeholder="Ano de Publicação"><br>
+                        <input type="submit" id="btn" value="CADASTRAR LIVRO">
+                    </fieldset>
                 </form>
-            </div>
-        </div>
-    </div>
+            </article>
+        </section> 
+    </main>
 </body>
 </html>
 
 <?php
-    echo "<br><br>";
     include "../pages/list_books.php";
 ?>
