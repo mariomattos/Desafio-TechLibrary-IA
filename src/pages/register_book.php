@@ -4,30 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechLibrary</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
-    <main class="container-fluid">
-        <section>
-            <article>
-                <h1 class="card-title">Cadastrar Livro</h1>
-                <form action="../models/register_book.php" method="post">
-                    <fieldset>
-                        <label>Título do Livro:</label>
-                        <input type="text" name="book_title" placeholder="Título do Livro">
-                        <label>Autor do Livro:</label>
-                        <input type="text" name="book_author" plaeholder="Autor do Livro" placeholder="Autor do Livro" required>
-                        <label>Ano de Publicação:</label>
-                        <input type="number" name="book_publication_year" max="<?php date('Y')?>" placeholder="Ano de Publicação"><br>
-                        <input type="submit" id="btn" value="CADASTRAR LIVRO">
-                    </fieldset>
-                </form>
-            </article>
-        </section> 
-    </main>
+    <div class="container shadow p-3 mb-5 bg-body rounded">
+        <h1 class="card-title">Cadastrar Livro</h1>
+        <form action="../models/register_book.php" method="post">
+            <fieldset>
+                <label>Título do Livro:</label>
+                <input class="form-control" type="text" name="book_title" placeholder="Título do Livro" aria-label="default input example" required>
+                <label>Autor do Livro:</label>
+                <input class="form-control" type="text" name="book_author" placeholder="Autor do Livro" aria-label="default input example" required>
+                <label>Ano de Publicação:</label>
+                <input class="form-control" type="number" name="book_publication_year" max="<?php date('Y') ?>" name="book_publication_year" placeholder="Ano de Publicação" required><br>
+                <input class="btn btn-success" type="submit" value="CADASTRAR LIVRO">
+            </fieldset>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
-
+<br>
 <?php
-    include "../pages/list_books.php";
+include "../pages/list_books.php";
 ?>
